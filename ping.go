@@ -125,9 +125,14 @@ func Ping(address string, timeout int) bool {
 	return err == nil
 }
 
-func Pinger(address string, timeout int) bool {
-	err := PingerMs(address, timeout*1000)
+func PingMs(address string, timeout int) bool {
+	err := PingerMs(address, timeout)
 	return err == nil
+}
+
+func Pinger(address string, timeout int) error {
+	err := PingerMs(address, timeout*1000)
+	return err
 }
 
 func PingerMs(address string, timeout int) error {
